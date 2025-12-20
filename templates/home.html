@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="hero animate-up">
+    <h1>The Operating System <br> for <span style="color: var(--primary-green);">Climate Action</span></h1>
+    <p>A modular, AI-powered infrastructure designed to scale global environmental solutions with intelligence and
+        precision.</p>
+    <div class="hero-actions">
+        <a href="#explore" class="btn btn-primary">Explore Platform</a>
+        <a href="#"
+            style="margin-left: 1rem; color: var(--text-secondary); text-decoration: none; font-weight: 500;">View
+            Documentation &rarr;</a>
+    </div>
+</section>
+
+<div id="explore" class="features-grid">
+    <div class="feature-card glass animate-up delay-1">
+        <h3>Climate Insight</h3>
+        <p>AI-driven risk assessments and environmental intelligence at your fingertips. Powered by a model-agnostic LLM
+            factory.</p>
+        <div style="margin-top: 2rem;">
+            <a href="/api/climate/assess-risk/"
+                style="color: var(--primary-green); text-decoration: none; font-weight: 600;">Open Module &rarr;</a>
+        </div>
+    </div>
+
+    <div class="feature-card glass animate-up delay-2">
+        <h3>Carbon Ledger</h3>
+        <p>Transparent, high-integrity tracking of climate impact across your entire ecosystem. (Coming Soon)</p>
+        <div style="margin-top: 2rem;">
+            <span
+                style="color: var(--text-secondary); font-size: 0.9rem; font-weight: 600; text-transform: uppercase;">Planned
+                Module</span>
+        </div>
+    </div>
+
+    <div class="feature-card glass animate-up delay-3">
+        <h3>EcoRegistry</h3>
+        <p>A unified registry for nature-based solutions, verified via automated satellite and sensor intelligence.
+            (Coming Soon)</p>
+        <div style="margin-top: 2rem;">
+            <span
+                style="color: var(--text-secondary); font-size: 0.9rem; font-weight: 600; text-transform: uppercase;">Planned
+                Module</span>
+        </div>
+    </div>
+</div>
+
+<section style="margin-top: 8rem;" class="animate-up delay-3">
+    <div class="glass" style="padding: 4rem; text-align: center;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Ready to deploy your tool?</h2>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 2.5rem;">EcoNexus provides the
+            scaffolding. You provide the impact. Our modular monolith architecture is built for rapid deployment.</p>
+        <a href="#" class="btn btn-primary">Get API Key</a>
+    </div>
+</section>
+{% endblock %}

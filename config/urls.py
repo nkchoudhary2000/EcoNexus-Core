@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import render
+
+def home_view(request):
+    return render(request, 'home.html')
 
 urlpatterns = [
+    path('', home_view, name='home'),
     path('admin/', admin.site.urls),
     path('api/auth/', include('allauth.urls')),
     path('api/climate/', include('modules.climate_insight.urls')),
