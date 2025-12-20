@@ -1,0 +1,11 @@
+django>=5.0,<5.1
+djangorestframework
+django-allauth[socialaccount]
+python-decouple
+google-generativeai
+openai
+psycopg2-binary
+dj-database-url
+whitenoise
+gunicorn
+django-cors-headers
