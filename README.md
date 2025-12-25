@@ -91,11 +91,24 @@ The system will automatically initialize the correct provider using the strategy
 
 ## 🚢 Deployment
 
-This project is pre-configured for **Render.com**. 
-1. Push to GitHub.
-2. Connect Render to the repository.
-3. Render will use `render.yaml` to provision the environment.
-4. Ensure all environment variables are set in the Render Dashboard.
+### Live Demo: [https://eco-nexus-core.vercel.app](https://eco-nexus-core.vercel.app)
+
+![EcoNexus Homepage](docs/images/homepage.png)
+
+This project is deployed using a **Totally Free Stack**:
+-   **Frontend/Backend Application**: [Vercel](https://vercel.com) (Serverless Python)
+-   **Database**: [Neon.tech](https://neon.tech) (Serverless PostgreSQL)
+
+### How to Deploy Your Own
+1.  **Fork** this repository.
+2.  **Create a Neon Database**: Get the connection string.
+3.  **Deploy on Vercel**:
+    -   Import the repository.
+    -   Add Environment Variables: `DATABASE_URL` (from Neon), `SECRET_KEY`, `DEBUG=False`.
+    -   Deploy!
+4.  **Run Migrations**: Connect locally to the Neon DB and run `python manage.py migrate`.
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for the detailed step-by-step guide.
 
 ## 🛡 Security & Constraints
 - **Zero Binary Storage**: All evidence must be provided via URLs (GDRIVE, Dropbox, etc.).
