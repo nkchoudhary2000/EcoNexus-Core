@@ -14,6 +14,7 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-default-key')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS += ['.vercel.app', '.now.sh']
 
 # Application definition
 INSTALLED_APPS = [
@@ -76,17 +77,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': tmpPostgres.path.replace('/', ''),
-        'USER': tmpPostgres.username,
-        'PASSWORD': tmpPostgres.password,
-        'HOST': tmpPostgres.hostname,
-        'PORT': 5432,
-        'OPTIONS': dict(parse_qsl(tmpPostgres.query)),
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600,
+        ssl_require=True if not DEBUG else False
+    )
 }
 
 # Custom User Model
@@ -149,11 +146,26 @@ OPENAI_API_KEY = config('OPENAI_API_KEY', default='')
 DEEPSEEK_API_KEY = config('DEEPSEEK_API_KEY', default='')
 
 # Django-Allauth settings
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'none' # Set to 'mandatory' in production
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email']
-# ACCOUNT_USERNAME_REQUIRED is no longer needed with these settings
+ACCOUNT_EMAIL_VERIFICATION = 'none' # Set to 'mandatory' in production
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': config('GOOGLE_CLIENT_ID', default=''),
+            'secret': config('GOOGLE_SECRET', default=''),
+            'key': ''
+        }
+    },
+    'github': {
+        'APP': {
+            'client_id': config('GITHUB_CLIENT_ID', default=''),
+            'secret': config('GITHUB_SECRET', default=''),
+            'key': ''
+        }
+    }
+}
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
